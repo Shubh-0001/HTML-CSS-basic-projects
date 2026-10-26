@@ -19,42 +19,72 @@ buttons.forEach(button => {
     });
 });
 
+document.addEventListener("keydown" , (event)=>{
+    if("0123456789.".includes(event.key)){
+        if(operate===""){
+            firstnum+=event.key;
+        }
+        else{
+            secondnum+=event.key;
+        }
+        display.value+=event.key;
+    }
+    else if("+/*-".includes(event.key)){
+        handleOperator(event.key);
+    }
+    else if(event.key=="Escape")getclear();
+    else if(event.key=="Backspace")getback();
+    else if(event.key=="Enter")getequal(display.value);
+});
+
 const operators = document.querySelectorAll(".operator");
 
-operators.forEach(button =>{
-    button.addEventListener("click" , ()=>{
-        if(display.value=="")return;
+function handleOperator(operator) {
+    if (display.value == "") return;
 
-        let prev = display.value.slice(-1);
-        if(prev=== "+" || prev==="-" || prev==="*" || prev==="/")return;
+    let prev = display.value.slice(-1);
 
-        firstnum=display.value;
-        operate= button.textContent;
-        display.value+=operate;
-        secondnum = "";
+    if (prev === "+" || prev === "-" || prev === "*" || prev === "/") return;
+
+    firstnum = display.value;
+    operate = operator;
+    display.value += operate;
+    secondnum = "";
+}
+
+function getequal(answer){
+    display.value = eval(answer);
+}
+
+function getclear(){
+    display.value="";
+    firstnum ="";
+    secondnum = "";
+    operate = "";
+}
+operators.forEach(button => {
+    button.addEventListener("click", () => {
+        handleOperator(button.textContent);
     });
 });
 
 const equal = document.querySelector(".equal");
 
 equal.addEventListener("click", () => {
-    display.value = eval(display.value);
+    getequal(display.value);
+    firstnum=display.value;
+    operate="";
+    secondnum="";
 });
 
 const clear = document.querySelector(".clear");
 
 clear.addEventListener("click" , ()=>{
-    display.value = "";
-    firstnum = "";
-    secondnum = "";
-    operate = "";
+    getclear();
 });
 
-const backspace = document.querySelector(".backspace");
-
-backspace.addEventListener("click", () => {
-
-    if (operate === "") {
+function getback(){
+     if (operate === "") {
         firstnum = firstnum.slice(0, -1);
         display.value = firstnum;
     }
@@ -66,5 +96,10 @@ backspace.addEventListener("click", () => {
         secondnum = secondnum.slice(0, -1);
         display.value = firstnum + operate + secondnum;
     }
+}
 
+const backspace = document.querySelector(".backspace");
+
+backspace.addEventListener("click", () => {
+    getback();
 });

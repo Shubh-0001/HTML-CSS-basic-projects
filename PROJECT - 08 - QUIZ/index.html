@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Zone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main_section">
+        <div class="address">
+            <h1>Quiz Zone</h1>
+            <h2>Pick a Subject</h2>
+        </div>
+        <div class="subjects">
+            <button class="science_btn">
+                <img src="icons/science.svg" alt="">
+                <span>Science</span>
+            </button>
+            <button class="mathematics_btn">
+                <img src="icons/maths.svg" alt="">
+                <span>Mathematics</span>
+            </button>
+            <button class="geography_btn">
+                <img src="icons/geography.svg" alt="">
+                <span>Geography</span>
+            </button>
+            <button class="history_btn">
+                <img src="icons/history.svg" alt="">
+                <span>History</span>
+            </button>
+            <button class="computer_btn">
+                <img src="icons/computer.svg" alt="">
+                <span>Computer</span>
+            </button>
+            <button class="sports_btn">
+                <img src="icons/sports.svg" alt="">
+                <span>Sports</span>
+            </button>
+            <button class="reasoning_btn">
+                <img src="icons/reasoning.svg" alt="">
+                <span>Reasoning</span>
+            </button>
+            <button class="englist_btn">
+                <img src="icons/english.svg" alt="">
+                <span>English</span>
+            </button>
+        </div>
+    </div>
+    <div class="quiz_section" hidden>
+        <div class="quiz_header">
+            <div class="sub_name">Science</div>
+            <div class="total_question">1/10</div>
+        </div>
+        <div class="progress_bar">
+            <div class="progress_fill"></div>
+        </div>
+        <div class="question_box">
+            <div class="question_no"></div>
+            <h2 class="question_text">
+
+            </h2>
+        </div>
+        <div class="options" id="optionsContainer">
+            <button class="option_btn">Option A</button>
+            <button class="option_btn">Option B</button>
+            <button class="option_btn">Option C</button>
+            <button class="option_btn">Option D</button>
+        </div>
+
+        <button id="nextBtn">Next Question →</button>
+    </div>
+</body>
+<script src="script.js"></script>
+</html>
